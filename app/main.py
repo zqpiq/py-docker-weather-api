@@ -1,4 +1,3 @@
-import os
 from typing import Any
 
 import requests
@@ -8,16 +7,15 @@ load_dotenv()
 
 
 def get_weather() -> dict[str, Any]:
-    api_key = os.getenv("API_KEY")
-    if not api_key:
-        raise ValueError("API_KEY does not exist")
-    city = "Paris"
-    url = "https://api.weatherapi.com/v1/current.json"
-    params = {"key": api_key, "q": city}
-    response = requests.get(url, params=params)
+    url = "https://wttr.in/Paris?format=j1"
+    response = requests.get(url)
     response.raise_for_status()
     data = response.json()
-    return data
+    current = data["current_condition"][0]
+    temp_c = current["temp_C"]
+    speed_wind = current["windspeedKmph"]
+    visibility = current["visibility"]
+    return {"city": "Paris", "celsius": temp_c, "wind speed": speed_wind, "visibility": visibility}
 
 
 if __name__ == "__main__":
