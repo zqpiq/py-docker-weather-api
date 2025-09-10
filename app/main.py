@@ -15,7 +15,12 @@ def get_weather() -> dict[str, Any]:
     temp_c = current["temp_C"]
     speed_wind = current["windspeedKmph"]
     visibility = current["visibility"]
-    return {"city": "Paris", "celsius": temp_c, "wind speed": speed_wind, "visibility": visibility}
+    return {
+        "city": "Paris",
+        "celsius": temp_c,
+        "wind speed": speed_wind,
+        "visibility": visibility
+    }
 
 
 if __name__ == "__main__":
