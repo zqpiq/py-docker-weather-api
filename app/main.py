@@ -11,7 +11,10 @@ load_dotenv()
 def get_weather() -> dict[str, Any]:
     api_key = os.getenv("API_KEY")
     if not api_key:
-        print("❌ Error: API_KEY was not found in the changes.", file=sys.stderr)
+        print(
+            "❌ Error: API_KEY was not found in the changes.",
+            file=sys.stderr
+        )
         sys.exit(1)
     city = "Paris"
     url = "http://api.weatherapi.com/v1/current.json"
