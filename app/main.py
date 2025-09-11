@@ -17,6 +17,7 @@ def get_weather() -> dict[str, Any]:
     response = requests.get(url, params=params)
     response.raise_for_status()
     data = response.json()
+    print(data)
     return data
 
 
